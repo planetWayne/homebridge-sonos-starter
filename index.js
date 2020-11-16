@@ -23,22 +23,28 @@ const httpRequest = function(url) {
 };
 
 function SonosAccessory(log, config) {
-	this.log = log;
-	this.config = config;
-	this.name = config["name"];
-	this.apiBaseUrl = config["apiBaseUrl"];
-	this.preset = config["preset"];
+        this.log = log;
+        this.config = config;
+        this.name = config["name"];
+        this.apiBaseUrl = config["apiBaseUrl"];
+        this.preset = config["preset"];
 
-	if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
-	if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
+        this.trackURI = config["trackURI"];
+        this.log("Track URI Found = " + this.trackURI);
+        this.log("Track Enhanced v1.0.7");
 
-	this.service = new Service.Switch(this.name);
+        if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
+        if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
 
-	this.service
-		.getCharacteristic(Characteristic.On)
-		.on('get', this.getOn.bind(this))
-		.on('set', this.setOn.bind(this));
+        this.service = new Service.Switch(this.name);
+
+        this.service
+                .getCharacteristic(Characteristic.On)
+                .on('get', this.getOn.bind(this))
+                .on('set', this.setOn.bind(this));
 }
+
+
 
 SonosAccessory.prototype.getServices = function() {
 	return [this.service];
@@ -52,11 +58,18 @@ SonosAccessory.prototype.getOn = function(callback) {
 			const zones = JSON.parse(data);
 			zones.forEach((zone) => {
 				this.log(">  " + zone.coordinator.roomName + ": " + zone.coordinator.state.playbackState);
-				if(zone.coordinator.state.playbackState === "PLAYING") {
-					anyPlaying = true;
-				}
+                                if(zone.coordinator.state.playbackState === "PLAYING") {
+                                         if(this.trackURI){
+                                                this.log("We have playback, but is it nominated track?");
+                                                this.log("Reported Track from Sonos = " + zone.coordinator.state.currentTrack.trackUri);
+                                                this.log("Track I'm Looking For = " + this.trackURI);
+                                                anyPlaying = (this.trackURI === zone.coordinator.state.currentTrack.trackUri) ? true:false;
+                                        } else {
+                                                anyPlaying = true;
+                                        }
+                                }
 			});			
-			this.log("reporting", anyPlaying);
+			this.log("reporting playback", anyPlaying);
 			callback(null, anyPlaying);
 		})
 		.catch((err) => {
