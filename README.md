@@ -1,4 +1,4 @@
-# homebridge-sonos-starter
+# homebridge-sonos-starter-trackuri
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
 
 ## Usecase
