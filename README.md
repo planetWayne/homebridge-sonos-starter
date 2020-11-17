@@ -5,11 +5,11 @@
 Automate regular playback in Homekit e.g. start a favorite playlist or radio in a specific room at a specific volume with Siri.
 
 
-**planetWayne - Forked variation**
+**planetWayne - TrackURI variation**
 
 This modified version take the idea of using the TrackURI to see if the Sonos is actually playing a track that you have optionally defined in the preset. The idea being that if you have multiple of these devices set up, they all appear as switches, you want to know if a particular 'switch' is on / playing. For use when you are streaming radio channels and may have multiple set up.
 
-At this point - there is no NPM - havnt figured that out yet!!
+At this point - there is no NPM - haven't figured that out yet!!
 
 
 ## Prerequisites
