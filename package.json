@@ -8,10 +8,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/stickcgn/homebridge-sonos-starter.git"
+    "url": "https://github.com/planetWayne/homebridge-sonos-starter-trackuri.git"
   },
   "bugs": {
-    "url": "https://github.com/stickcgn/homebridge-sonos-starter/issues"
+    "url": "https://github.com/planetWayne/homebridge-sonos-starter-trackuri/issues"
   },
   "engines": {
     "node": ">=0.12.0",
