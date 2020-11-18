@@ -13,8 +13,11 @@ What I was finding was if I had multiple 'presets' defined with differnet stream
 
 To get the URI for your config, either to configure the preset in 'Node-Sonos-HTTP-API' and then to match in oyur homebridge config.json, load up your desired streaming channel, get it playing, then use the /state URL with '..HTTP-API' and look for the section 'TrackUri' and copy its data. 
 
+NOTE: 
+This is functionally the same as the original work done by [Dirk Winkler](https://github.com/stickcgn/homebridge-sonos-starter.git) and is pretty much a drop in replacement, the only thing to note is the accessory name needs to be changed to use this version. If you already have a comprehensive setup then you can keep that config and not worry about a value for the TrackURI for it to work in the same way.
 
-At this point - there is no NPM - haven't figured that out yet!!
+
+<s>At this point - there is no NPM - haven't figured that out yet!!<s> Yes there is now!
 
 
 ## Prerequisites
