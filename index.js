@@ -30,8 +30,8 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.7");
-        this.log("Track URI Found = " + (this.trackURI === undefined ? "None" : this.trackURI));
+        this.log("Track Enhanced v1.0.9");
+        this.log("Track URI Found = " + (this.trackURI === undefined ) ? "None" : this.trackURI);
 
         if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
         if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
@@ -62,7 +62,7 @@ SonosAccessory.prototype.getOn = function(callback) {
                                          if(this.trackURI){
                                                 this.log("We have playback, but is it nominated track?");
                                                 this.log("Reported Track from Sonos = " + zone.coordinator.state.currentTrack.trackUri);
-                                                this.log("Track I'm Looking For = " + (this.trackURI === undefined ? "None" : this.trackURI);
+                                                this.log("Track I'm Looking For = " + (this.trackURI === undefined) ? "None" : this.trackURI);
                                                 anyPlaying = (this.trackURI === zone.coordinator.state.currentTrack.trackUri);
                                         } else {
                                                 anyPlaying = true;
