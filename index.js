@@ -4,7 +4,7 @@ var Service, Characteristic, VolumeCharacteristic;
 module.exports = function(homebridge) {
 	Service = homebridge.hap.Service;
 	Characteristic = homebridge.hap.Characteristic;
-	homebridge.registerAccessory("homebridge-sonos-starter", "SonosStarter", SonosAccessory);
+	homebridge.registerAccessory("homebridge-sonos-starter-track", "SonosStarterTrack", SonosAccessory);
 }
 
 const httpRequest = function(url) {
@@ -30,8 +30,8 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track URI Found = " + this.trackURI);
         this.log("Track Enhanced v1.0.7");
+        this.log("Track URI Found = " + this.trackURI);
 
         if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
         if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
@@ -63,7 +63,7 @@ SonosAccessory.prototype.getOn = function(callback) {
                                                 this.log("We have playback, but is it nominated track?");
                                                 this.log("Reported Track from Sonos = " + zone.coordinator.state.currentTrack.trackUri);
                                                 this.log("Track I'm Looking For = " + this.trackURI);
-                                                anyPlaying = (this.trackURI === zone.coordinator.state.currentTrack.trackUri) ? true:false;
+                                                anyPlaying = (this.trackURI === zone.coordinator.state.currentTrack.trackUri);
                                         } else {
                                                 anyPlaying = true;
                                         }
