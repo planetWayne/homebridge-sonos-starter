@@ -11,7 +11,7 @@ This modified version take the idea of using the TrackURI to see if the Sonos is
 
 What I was finding was if I had multiple 'presets' defined with differnet streaming channels, each time you switched to another preset you ended up with a row of 'on' switches and no way of knowing what was actually playing. Then if you turned one off, they would all go off. This version looks at the TrackURI setting and compairs that to your config, and only reporting as being 'on' if the track matched. It will also 'turn off' the other switches in homekit.
 
-To get the URI for your config, either to configure the preset in 'Node-Sonos-HTTP-API' and then to match in oyur homebridge config.json, load up your desired streaming channel, get it playing, then use the /state URL with '..HTTP-API' and look for the section 'TrackUri' and copy its data. 
+To get the URI for your config, either to configure the preset in 'Node-Sonos-HTTP-API' and then to match in your homebridge config.json, load up your desired streaming channel, get it playing, then use the /state URL with '..HTTP-API' and look for the section 'TrackUri' and copy its data. Paste that into your Config.json file.
 
 NOTE: 
 This is functionally the same as the original work done by [Dirk Winkler](https://github.com/stickcgn/homebridge-sonos-starter.git) and is pretty much a drop in replacement, the only thing to note is the accessory name needs to be changed to use this version. If you already have a comprehensive setup then you can keep that config and not worry about a value for the TrackURI for it to work in the same way.

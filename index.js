@@ -30,7 +30,7 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.9");
+        this.log("Track Enhanced v1.0.10");
         this.log("Track URI Found = " + (this.trackURI === undefined ) ? "None" : this.trackURI);
 
         if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
