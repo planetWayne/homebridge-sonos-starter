@@ -17,7 +17,7 @@ NOTE:
 This is functionally the same as the original work done by [Dirk Winkler](https://github.com/stickcgn/homebridge-sonos-starter.git) and is pretty much a drop in replacement, the only thing to note is the accessory name needs to be changed to use this version. If you already have a comprehensive setup then you can keep that config and not worry about a value for the TrackURI for it to work in the same way.
 
 
-<s>At this point - there is no NPM - haven't figured that out yet!!</s> [Yes there is now!] (https://www.npmjs.com/package/homebridge-sonos-starter-track)
+<s>At this point - there is no NPM - haven't figured that out yet!!</s> [Yes there is now!](https://www.npmjs.com/package/homebridge-sonos-starter-track)
 
 
 ## Prerequisites
