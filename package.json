@@ -1,7 +1,7 @@
 {
   "name": "homebridge-sonos-starter-track",
   "version": "1.0.11",
-  "description": "Sonos plugin for homebridge: https://github.com/nfarina/homebridge that starts presets via https://github.com/jishi/node-sonos-http-api. This fork also looks to see what track is playing and reports as on when the playing track matches with the URI specified in the config.",
+  "description": "Sonos plugin for homebridge: https://github.com/nfarina/homebridge that starts presets via https://github.com/jishi/node-sonos-http-api. This fork also looks to see what track is playing and reports as and when the playing track matches with the URI specified in the config.",
   "license": "ISC",
   "keywords": [
     "homebridge-plugin", "sonos"
