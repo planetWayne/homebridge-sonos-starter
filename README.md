@@ -1,13 +1,13 @@
-# homebridge-sonos-starter-trackuri
+# homebridge-sonos-starter-track
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
 
 ## Usecase
 Automate regular playback in Homekit e.g. start a favorite playlist or radio in a specific room at a specific volume with Siri.
 
 
-**planetWayne - TrackURI variation**
+**planetWayne - Track variation**
 
-This modified version take the idea of using the TrackURI to see if the Sonos is actually playing a track that you have optionally defined in the preset. The idea being that if you have multiple of these devices set up, they all appear as switches, you want to know if a particular 'switch' is on / playing. For use when you are streaming radio channels and may have multiple set up.
+This modified version takes the idea of using the TrackURI to see if the Sonos is actually playing a track that you have optionally defined in a preset. The idea being that if you have multiple of these devices set up, they all appear as switches, you want to know if a particular 'switch' is on / playing. For use when you are streaming radio channels and may have multiple set up.
 
 What I was finding was if I had multiple 'presets' defined with differnet streaming channels, each time you switched to another preset you ended up with a row of 'on' switches and no way of knowing what was actually playing. Then if you turned one off, they would all go off. This version looks at the TrackURI setting and compairs that to your config, and only reporting as being 'on' if the track matched. It will also 'turn off' the other switches in homekit.
 
@@ -31,6 +31,10 @@ Clone this repository, change into that forlder and execute the following
 npm install
 npm link
 ```
+Or directly from NPM
+```
+sudo npm -g install homebridge-sonos-starter-track
+```
 
 ## Configuration
 
@@ -42,20 +46,23 @@ Add accessory to `~/.homebridge/config.json` of [Homebridge](https://github.com/
     ...
     {
         "accessory": "SonosStarterTrack",
-        "name": "Morning Music",
+        "name": "Kitchen BBC Radio 2",
         "apiBaseUrl": "http://localhost:5005",
-        "preset": "workday-morning"
+        "preset": "Kitchen-Radio2"
         "trackURI": "x-sonosapi-stream:...{GetDetails from sonosapi/state}"
     },
     ...
 ```
 
+You can have multiple accessories with different presets, just duplicate the accessory section and change the name, preset and trackURI accordingly.
+
+
 - `accessory` needs to be `SonosStarterTrack`
 - `name` is the name that HomeKit will use
 - `apiBaseUrl` is the base URL where [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) lives
-- `preset` is the [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api)-preset that should be started
-- `trackURI` *Optional* this is the trackUri taken from the /stats page of [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) - this is used to see if a particular track or stream is playing. The idea being that you can have visualisation and within HomeKit that the track you have in your 'preset' is indeed the track playing. 
+- `preset` is the [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) - preset that should be started
+- `trackURI` *Optional* this is the 'trackUri' taken from the /stats page of [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) - this is used to see if a particular track or stream is playing. The idea being that you can have visualisation within HomeKit that the track you have in your 'preset' is indeed the track playing. 
 
 ## Finally
 
-Restart [Homebridge](https://github.com/nfarina/homebridge) and that's it. Tested with node 6 on a raspi.
+Restart [Homebridge](https://github.com/nfarina/homebridge) and that's it. Tested with node 6 on a raspi, also running with Node on OSX
