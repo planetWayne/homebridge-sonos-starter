@@ -30,8 +30,15 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.11");
+        this.log("Track Enhanced v1.0.12Beta1");
         this.log("Track URI Found = " + this.trackURI);
+
+        
+        // Look for a new field 'onPauseWhat' - this will be a json array of zones / players that you want to pause on turning
+        // an item off. If found then each player / zone is sent the pause command instead of a 'pauseAll'
+        this.onPauseWhat = config["onPauseWhat"];
+
+
 
         if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
         if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
