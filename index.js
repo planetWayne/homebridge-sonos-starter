@@ -99,14 +99,42 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 	  		});
 
 	} else {
-		httpRequest(this.apiBaseUrl + "/pauseAll")
-	  		.then((data) => {
-	  			this.log("paused all");
-				callback(null);
-	  		})
-	  		.catch((err) => {
-	  			this.log("pauseall failed", err);
-	  			callback(err);
-	  		});
+
+		// Changes for Pause vs PauseAll
+
+		if (typeof onPauseWhat === 'object') {
+			// We have said we want to pause a list of players/zones
+
+			this.log("Pausing indevidual Zones...");
+
+			onPauseWhat.forEach(zoneName => {
+					httpRequest(this.apiBaseUrl + "/" + zoneName + "/pause")
+			  			.then((data) => {
+		  					this.log("Paused "+zoneName);
+		  					callback(null);
+			
+					  	});
+		  				.catch((err) => {
+		  					this.log("Pause failed for "+zoneName);
+		  					callback(err);
+		  				});
+
+				}
+			); 
+
+
+		} else {
+
+			httpRequest(this.apiBaseUrl + "/pauseAll")
+		  		.then((data) => {
+		  			this.log("Paused all");
+					callback(null);
+		  		});
+		  		.catch((err) => {
+		  			this.log("Pause all failed", err);
+		  			callback(err);
+		  		});
+
+	  	}
 	}
 }
