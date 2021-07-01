@@ -30,7 +30,7 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.13");
+        this.log("Track Enhanced v1.0.14");
         this.log("Track URI Found = " + this.trackURI);
 
         
@@ -102,19 +102,19 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 
 		// Changes for Pause vs PauseAll
 
-		if (typeof onPauseWhat === 'object') {
+		if (typeof this.onPauseWhat === 'object') {
 			// We have said we want to pause a list of players/zones
 
-			this.log("Pausing indevidual Zones...");
+			this.log("Pausing individual Zones...");
 
-			onPauseWhat.forEach(zoneName => {
+			this.onPauseWhat.forEach(zoneName => {
 					httpRequest(this.apiBaseUrl + "/" + zoneName + "/pause")
 			  			.then((data) => {
-		  					this.log("Paused "+zoneName);
+		  					this.log("Paused " + zoneName);
 		  					callback(null);
 					  	})
 		  				.catch((err) => {
-		  					this.log("Pause failed for "+zoneName);
+		  					this.log("Pause failed for " + zoneName, err);
 		  					callback(err);
 		  				});
 
