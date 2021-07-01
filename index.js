@@ -112,8 +112,7 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 			  			.then((data) => {
 		  					this.log("Paused "+zoneName);
 		  					callback(null);
-			
-					  	});
+					  	})
 		  				.catch((err) => {
 		  					this.log("Pause failed for "+zoneName);
 		  					callback(err);
@@ -129,7 +128,7 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 		  		.then((data) => {
 		  			this.log("Paused all");
 					callback(null);
-		  		});
+		  		})
 		  		.catch((err) => {
 		  			this.log("Pause all failed", err);
 		  			callback(err);
