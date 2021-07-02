@@ -9,15 +9,20 @@ Automate regular playback in Homekit e.g. start a favorite playlist or radio in 
 
 This modified version takes the idea of using the TrackURI to see if the Sonos is actually playing a track that you have optionally defined in a preset. The idea being that if you have multiple of these devices set up, they all appear as switches, you want to know if a particular 'switch' is on / playing. For use when you are streaming radio channels and may have multiple set up.
 
-What I was finding was if I had multiple 'presets' defined with differnet streaming channels, each time you switched to another preset you ended up with a row of 'on' switches and no way of knowing what was actually playing. Then if you turned one off, they would all go off. This version looks at the TrackURI setting and compairs that to your config, and only reporting as being 'on' if the track matched. It will also 'turn off' the other switches in homekit.
+What I was finding is if I had multiple 'presets' defined with differnet streaming channels, each time you switched to another preset you ended up with a row of 'on' switches and no way of knowing what was actually playing. Then if you turned one off, they would all go off. This version looks at the TrackURI setting and compairs that to your config, and only reporting as being 'on' if the track matched. It will also 'turn off' the other switches in homekit.
 
 To get the URI for your config, either to configure the preset in 'Node-Sonos-HTTP-API' and then to match in your homebridge config.json, load up your desired streaming channel, get it playing, then use the /state URL with '..HTTP-API' and look for the section 'TrackUri' and copy its data. Paste that into your Config.json file.
 
 NOTE: 
-This is functionally the same as the original work done by [Dirk Winkler](https://github.com/stickcgn/homebridge-sonos-starter.git) and is pretty much a drop in replacement, the only thing to note is the accessory name needs to be changed to use this version. If you already have a comprehensive setup then you can keep that config and not worry about a value for the TrackURI for it to work in the same way.
+This is functionally the same as the original work done by [Dirk Winkler](https://github.com/stickcgn/homebridge-sonos-starter.git) and is pretty much a drop in replacement, the only thing to note is the accessory name needs to be changed to use this version. If you already have a comprehensive setup then you can keep that config and not worry about a value for the TrackURI for it to work in the same way, just update the accessory name.
 
 
 <s>At this point - there is no NPM - haven't figured that out yet!!</s> [Yes there is now!](https://www.npmjs.com/package/homebridge-sonos-starter-track)
+
+
+## Version 10.0.15 Update
+Now adds an optional extra field to turn off individual zones / players when the Sonos is turned off. Now instead of a ‘pause all’ which stops all players, you can now name as part of the setup which players / zones you wish to turn off.
+NOTE: I can’t at this point confirm if this works fully - please test and feedback! (I need another player or two ;-))
 
 
 ## Prerequisites
