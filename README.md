@@ -50,12 +50,12 @@ Add accessory to `~/.homebridge/config.json` of [Homebridge](https://github.com/
         "apiBaseUrl": "http://localhost:5005",
         "preset": "Kitchen-Radio2"
         "trackURI": "x-sonosapi-stream:...{GetDetails from sonosapi/state}"
-        "onPauseWhat": ["Kitchen"]
+        "onPauseWhat": ["Kitchen","Bedroom","Lounge"]
     },
     ...
 ```
 
-You can have multiple accessories with different presets, just duplicate the accessory section and change the name, preset and trackURI accordingly.
+You can have multiple accessories with different presets, just duplicate the accessory section and change the name, preset, trackURI and onPauseWhat accordingly.
 
 
 - `accessory` needs to be `SonosStarterTrack`
@@ -64,7 +64,7 @@ You can have multiple accessories with different presets, just duplicate the acc
 - `preset` is the [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) - preset that should be started
 - `trackURI` *Optional* this is the 'trackUri' taken from the /stats page of [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) - this is used to see if a particular track or stream is playing. The idea being that you can have visualisation within HomeKit that the track you have in your 'preset' is indeed the track playing.
 - `onPauseWhat` *Optional* This is an array / list of Zones that you want to pause when a device gets turned 'off'. The idea being that now you can pause specific players / Zones instead of pausing your whole Sonos system.
-    *At present - due to lack of understanding on may part, there is a bug where it doesnt work if there is more than one entry in the array, bun instead of scrapping the whole thing, you can pause ONE zone or player.*
+    *At present - ~~due to lack of understanding on may part, there is a bug where it doesnt work if there is more than one entry in the array, bun instead of scrapping the whole thing, you can pause ONE zone or player.~~ Hopefully that bug is now fixed in v1.0.15 but I have no way to test it! - feedback Welcomed*
 
 ## Finally
 

@@ -30,7 +30,7 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.14");
+        this.log("Track Enhanced v1.0.15");
         this.log("Track URI Found = " + this.trackURI);
 
         
@@ -101,26 +101,38 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 	} else {
 
 		// Changes for Pause vs PauseAll
+		this.log("About to stop " + this.preset + "...");
 
 		if (typeof this.onPauseWhat === 'object') {
 			// We have said we want to pause a list of players/zones
 
 			this.log("Pausing individual Zones...");
 
+			var zoneErrors = [];
+
 			this.onPauseWhat.forEach(zoneName => {
 					httpRequest(this.apiBaseUrl + "/" + zoneName + "/pause")
 			  			.then((data) => {
 		  					this.log("Paused " + zoneName);
-		  					callback(null);
+		  					// callback(null);
 					  	})
 		  				.catch((err) => {
-		  					this.log("Pause failed for " + zoneName, err);
-		  					callback(err);
+		  					zoneErrors.push("Pause failed for " + zoneName + " : API Error = " + err);
+		  					this.log(zoneErrors[zoneErrors.length - 1]);
+		  					
+		  					// callback(err);
 		  				});
 
 				}
-			); 
+			);
 
+			// Callbacks should only be called once!  Being as though we have built up a multi array of errors and players, return that
+			// if there are any. If not, just call 'callback' with the default 'null'
+			if (zoneErrors.length === 0) {
+				callback(null);
+			} else {
+				callback(zoneErrors);
+			}
 
 		} else {
 
@@ -130,8 +142,8 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 					callback(null);
 		  		})
 		  		.catch((err) => {
-		  			this.log("Pause all failed", err);
-		  			callback(err);
+		  			this.log("Pause All Failed : API Error = " + err);
+		  			callback("Pause All Failed : API Error = " + err);
 		  		});
 
 	  	}
