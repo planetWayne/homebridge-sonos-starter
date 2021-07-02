@@ -1,6 +1,11 @@
 # homebridge-sonos-starter-track
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
 
+## Version 10.0.15 Update
+Now adds an optional extra field to turn off individual zones / players when the Sonos is turned off. Now instead of a ‘pause all’ which stops all players, you can now name, as part of the setup, which players / zones you wish to turn off.
+NOTE: I can’t at this point confirm if this works fully - please test and feedback! (I need another player or two ;-))
+
+
 ## Usecase
 Automate regular playback in Homekit e.g. start a favorite playlist or radio in a specific room at a specific volume with Siri.
 
@@ -19,10 +24,6 @@ This is functionally the same as the original work done by [Dirk Winkler](https:
 
 <s>At this point - there is no NPM - haven't figured that out yet!!</s> [Yes there is now!](https://www.npmjs.com/package/homebridge-sonos-starter-track)
 
-
-## Version 10.0.15 Update
-Now adds an optional extra field to turn off individual zones / players when the Sonos is turned off. Now instead of a ‘pause all’ which stops all players, you can now name as part of the setup which players / zones you wish to turn off.
-NOTE: I can’t at this point confirm if this works fully - please test and feedback! (I need another player or two ;-))
 
 
 ## Prerequisites
