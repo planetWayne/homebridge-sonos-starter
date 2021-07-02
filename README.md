@@ -71,6 +71,7 @@ You can have multiple accessories with different presets, just duplicate the acc
 - `onPauseWhat` *Optional* This is an array / list of Zones that you want to pause when a device gets turned 'off'. The idea being that now you can pause specific players / Zones instead of pausing your whole Sonos system.
     *At present - ~~due to lack of understanding on may part, there is a bug where it doesnt work if there is more than one entry in the array, bun instead of scrapping the whole thing, you can pause ONE zone or player.~~ Hopefully that bug is now fixed in v1.0.15 but I have no way to test it! - feedback Welcomed*
 
+
 ## Finally
 
 Restart [Homebridge](https://github.com/nfarina/homebridge) and that's it. Original DW version Tested with node 6 on a raspi, this version also running with homebridge on OSX
