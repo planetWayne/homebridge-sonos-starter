@@ -30,8 +30,15 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.11");
+        this.log("Track Enhanced v1.0.15");
         this.log("Track URI Found = " + this.trackURI);
+
+        
+        // Look for a new field 'onPauseWhat' - this will be a json array of zones / players that you want to pause on turning
+        // an item off. If found then each player / zone is sent the pause command instead of a 'pauseAll'
+        this.onPauseWhat = config["onPauseWhat"];
+
+
 
         if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
         if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
@@ -92,14 +99,53 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 	  		});
 
 	} else {
-		httpRequest(this.apiBaseUrl + "/pauseAll")
-	  		.then((data) => {
-	  			this.log("paused all");
+
+		// Changes for Pause vs PauseAll
+		this.log("About to stop " + this.preset + "...");
+
+		if (typeof this.onPauseWhat === 'object') {
+			// We have said we want to pause a list of players/zones
+
+			this.log("Pausing individual Zones...");
+
+			var zoneErrors = [];
+
+			this.onPauseWhat.forEach(zoneName => {
+					httpRequest(this.apiBaseUrl + "/" + zoneName + "/pause")
+			  			.then((data) => {
+		  					this.log("Paused " + zoneName);
+		  					// callback(null);
+					  	})
+		  				.catch((err) => {
+		  					zoneErrors.push("Pause failed for " + zoneName + " : API Error = " + err);
+		  					this.log(zoneErrors[zoneErrors.length - 1]);
+		  					
+		  					// callback(err);
+		  				});
+
+				}
+			);
+
+			// Callbacks should only be called once!  Being as though we have built up a multi array of errors and players, return that
+			// if there are any. If not, just call 'callback' with the default 'null'
+			if (zoneErrors.length === 0) {
 				callback(null);
-	  		})
-	  		.catch((err) => {
-	  			this.log("pauseall failed", err);
-	  			callback(err);
-	  		});
+			} else {
+				callback(zoneErrors);
+			}
+
+		} else {
+
+			httpRequest(this.apiBaseUrl + "/pauseAll")
+		  		.then((data) => {
+		  			this.log("Paused all");
+					callback(null);
+		  		})
+		  		.catch((err) => {
+		  			this.log("Pause All Failed : API Error = " + err);
+		  			callback("Pause All Failed : API Error = " + err);
+		  		});
+
+	  	}
 	}
 }
