@@ -33,6 +33,8 @@ function SonosAccessory(log, config) {
         this.log("Track Enhanced v1.0.16");
         if (this.trackURI){
 	        this.log("Track URI Found = " + this.trackURI);
+        } else {
+        	this.log("No TrackURI defined for this instance");
         }
 
         

@@ -35,6 +35,14 @@ This is functionally the same as the original work done by [Dirk Winkler](https:
 
 ## Installation
 
+### Install via Homebridge Config UI X
+
+1. Search for `Sonos Starter Track` on the Plugins tab of [Homebridge Config UI](https://www.npmjs.com/package/homebridge-config-ui-x).
+2. Install the `Homebridge Sonos Starter Track` plugin and use the form to set up your configuration.
+
+
+### Manual Installation
+
 Clone this repository, change into that forlder and execute the following
 ```
 npm install
@@ -46,10 +54,6 @@ sudo npm -g install homebridge-sonos-starter-track
 ```
 
 ## Configuration
-
-Version 10.0.16 now allows config via HomeBridge UI.
-
-
 
 Add accessory to `~/.homebridge/config.json` of [Homebridge](https://github.com/nfarina/homebridge) like this:
 
