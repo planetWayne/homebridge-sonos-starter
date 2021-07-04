@@ -30,7 +30,7 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.16");
+        this.log("Track Enhanced v1.0.17");
         if (this.trackURI){
 	        this.log("Track URI Found = " + this.trackURI);
         } else {

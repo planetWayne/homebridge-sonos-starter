@@ -1,7 +1,7 @@
 # homebridge-sonos-starter-track
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
 
-## Version 10.0.16 Update 
+## Version 10.0.17 Update 
 In an attempt to make things easier, you can now configure this within the Homebridge UI without the need to dive directly into the JSON file.
 
 ## Version 10.0.15 Update
