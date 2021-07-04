@@ -1,6 +1,9 @@
 # homebridge-sonos-starter-track
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
 
+## Version 10.0.16 Update 
+In an attempt to make things easier, you can now configure this within the Homebridge UI without the need to dive directly into the JSON file.
+
 ## Version 10.0.15 Update
 Now adds an optional extra field to turn off individual zones / players when the Sonos is turned off. Now instead of a ‘pause all’ which stops all players, you can now name, as part of the setup, which players / zones you wish to turn off.
 NOTE: I can’t at this point confirm if this works fully - please test and feedback! (I need another player or two ;-))
@@ -43,6 +46,10 @@ sudo npm -g install homebridge-sonos-starter-track
 ```
 
 ## Configuration
+
+Version 10.0.16 now allows config via HomeBridge UI.
+
+
 
 Add accessory to `~/.homebridge/config.json` of [Homebridge](https://github.com/nfarina/homebridge) like this:
 

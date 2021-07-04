@@ -30,8 +30,10 @@ function SonosAccessory(log, config) {
         this.preset = config["preset"];
 
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.15");
-        this.log("Track URI Found = " + this.trackURI);
+        this.log("Track Enhanced v1.0.16");
+        if (this.trackURI){
+	        this.log("Track URI Found = " + this.trackURI);
+        }
 
         
         // Look for a new field 'onPauseWhat' - this will be a json array of zones / players that you want to pause on turning

@@ -1,5 +1,11 @@
 # Change Log 
 
+## Version 10.0.16 Update
+
+### Notable Changes
+
+Added support for the config to now be done easily via the HomeBridge UI Web interface. No more direct JSON editing - unless you want to :) !
+
 ## Version 10.0.15 Update
 
 ### Notable Changes

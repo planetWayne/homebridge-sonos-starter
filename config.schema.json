@@ -1,0 +1,59 @@
+{
+  "pluginAlias": "SonosStarterTrack",
+  "pluginType": "accessory",
+  "singular": false,
+  "headerDisplay": "This plugin utilises **[Sonos HTTP API](https://github.com/jishi/node-sonos-http-api)** which must be accessable on your network for this plugin to work.",
+  "footerDisplay": "Note, this isnt a full Sono Controler replacement. It exposes 'switches' to Homebridge to allow you to select specific configs defined within Sonos HTTP API.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "description": "Enter the name that will appear in Homekit for this device.",
+        "required": true
+      },
+      "apiBaseUrl": {
+        "title": "Sonos HTTP API address",
+        "type": "string",
+        "default": "http://localhost:5005",
+        "description": "Base URL used for the Sonos HTTP API",
+        "required": true,
+        "format": "uri",
+        "typeahead": {
+          "source": [
+            "http://localhost:5005"
+          ]
+        }
+      },
+      "preset": {
+        "title": "Sonos HTTP API Preset Name",
+        "type": "string",
+        "description": "Enter the name of the Sonos HTTP API Preset you want to activate.",
+        "required": true
+      },
+      "trackURI": {
+        "title": "Track URI",
+        "type": "string",
+        "description": "Used to detect if Sonos is playing a specific track. Use '/state' with the API to find the value for TrackURI for a currently playing track in the format of 'x-sonosapi-stream:{somenumbers}'.",
+        "required": false,
+        "typeahead": {
+          "source": [ 
+            "x-sonosapi-stream:"
+          ]
+        }
+      },
+      "onPauseWhat": {
+        "title": "Zones / Players to Pause when 'off'.",
+        "type": "array",
+        "description": "When the device gets paused, what players / zones do you want to pause. If none set, will issue a PauseAll",
+        "required": false,
+        "items": {
+          "title": "Zone/Player",
+          "description": "Name of the Player or Zone",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
