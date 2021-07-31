@@ -92,7 +92,7 @@ SonosAccessory.prototype.getOn = function(callback) {
 			this.log("getting zones");
 			const zones = JSON.parse(data);
 			zones.forEach((zone) => {
-				this.log(">  " + zone.coordinator.roomName + ": " + zone.coordinator.state.playbackState);
+				this.log("Zone > " + zone.coordinator.roomName + ": " + zone.coordinator.state.playbackState);
                                 if(zone.coordinator.state.playbackState === "PLAYING") {
                                          if(this.trackURI){
                                                 this.log("We have playback, but is it nominated track?");
@@ -104,7 +104,7 @@ SonosAccessory.prototype.getOn = function(callback) {
                                         }
                                 }
 			});			
-			this.log("reporting playback", anyPlaying);
+			this.log.warn("Reporting Playback:", anyPlaying.toString().toUpperCase());
 			callback(null, anyPlaying);
 		})
 		.catch((err) => {
@@ -142,13 +142,12 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 					httpRequest(this.apiBaseUrl + "/" + zoneName + "/pause")
 			  			.then((data) => {
 		  					this.log("Paused " + zoneName);
-		  					// callback(null);
+
 					  	})
 		  				.catch((err) => {
 		  					zoneErrors.push("Pause failed for " + zoneName + " : API Error = " + err);
 		  					this.log.error(zoneErrors[zoneErrors.length - 1]);
 		  					
-		  					// callback(err);
 		  				});
 
 				}
