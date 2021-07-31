@@ -28,11 +28,30 @@ function SonosAccessory(log, config) {
         this.name = config["name"];
         this.apiBaseUrl = config["apiBaseUrl"];
         this.preset = config["preset"];
-
         this.trackURI = config["trackURI"];
-        this.log("Track Enhanced v1.0.17");
+
+
+        // Let them know we are loading an instance
+        this.log("Track Enhanced v1.0.18");
+
+
+        // Check for compulsory values - if they are not present, then return early.
+        // this appears to have the effect that this 'instance' is then not loaded. 
+        // Which is what you want for somthing that wont work correctly due to missing parameters.
+        try{
+	        if (!this.apiBaseUrl) throw "You must provide a config value for 'apiBaseUrl'";
+	        if (!this.preset) throw "You must provide a config value for 'preset'";
+	    }
+	    catch (whups){
+	    	this.log.error("Error Initialising Instance -",whups);
+	    	return false;
+	    }
+
+
+	    // Bit of info about the detected parameters out to the log.
+
         if (this.trackURI){
-	        this.log("Track URI Found = " + this.trackURI);
+	        this.log("TrackURI Specified = " + this.trackURI);
         } else {
         	this.log("No TrackURI defined for this instance");
         }
@@ -41,11 +60,16 @@ function SonosAccessory(log, config) {
         // Look for a new field 'onPauseWhat' - this will be a json array of zones / players that you want to pause on turning
         // an item off. If found then each player / zone is sent the pause command instead of a 'pauseAll'
         this.onPauseWhat = config["onPauseWhat"];
+        if (this.onPauseWhat){
+        	this.log("Set to player pause - " + this.onPauseWhat);
+        } else {
+        	this.log("Instance will Pause All")
+        }
 
 
 
-        if (!this.apiBaseUrl) throw new Error("You must provide a config value for 'apiBaseUrl'.");
-        if (!this.preset) throw new Error("You must provide a config value for 'preset'.");
+
+
 
         this.service = new Service.Switch(this.name);
 
@@ -84,7 +108,7 @@ SonosAccessory.prototype.getOn = function(callback) {
 			callback(null, anyPlaying);
 		})
 		.catch((err) => {
-	  		this.log("fail", err);
+	  		this.log.error("fail", err);
 	  		callback(err);
 		});
 }
@@ -98,7 +122,7 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 				callback(null);
 	  		})
 	  		.catch((err) => {
-	  			this.log("fail", err);
+	  			this.log.error("fail", err);
 	  			callback(err);
 	  		});
 
@@ -122,7 +146,7 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 					  	})
 		  				.catch((err) => {
 		  					zoneErrors.push("Pause failed for " + zoneName + " : API Error = " + err);
-		  					this.log(zoneErrors[zoneErrors.length - 1]);
+		  					this.log.error(zoneErrors[zoneErrors.length - 1]);
 		  					
 		  					// callback(err);
 		  				});
@@ -146,7 +170,7 @@ SonosAccessory.prototype.setOn = function(on, callback) {
 					callback(null);
 		  		})
 		  		.catch((err) => {
-		  			this.log("Pause All Failed : API Error = " + err);
+		  			this.log.error("Pause All Failed : API Error = " + err);
 		  			callback("Pause All Failed : API Error = " + err);
 		  		});
 
