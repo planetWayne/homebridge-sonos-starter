@@ -97,7 +97,7 @@ SonosAccessory.prototype.getOn = function(callback) {
                                          if(this.trackURI){
                                                 this.log("We have playback, but is it nominated track?");
                                                 this.log("Reported Track from Sonos = " + zone.coordinator.state.currentTrack.trackUri);
-                                                this.log("Track I'm Looking For = " + this.trackURI);
+                                                this.log("    Track I'm Looking For = " + this.trackURI);
                                                 anyPlaying = (this.trackURI === zone.coordinator.state.currentTrack.trackUri);
                                         } else {
                                                 anyPlaying = true;

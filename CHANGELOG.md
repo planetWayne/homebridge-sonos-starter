@@ -1,5 +1,11 @@
 # Change Log 
 
+## Version 10.0.18 Update
+
+### Notable Changes
+
+In the pursuit of plugin validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
+
 ## Version 10.0.17 Update
 
 ### Notable Changes
