@@ -4,7 +4,7 @@
 
 ### Notable Changes
 
-In the pursuit of plugin validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
+In the pursuit of plug-in validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
 
 ## Version 10.0.17 Update
 

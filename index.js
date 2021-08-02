@@ -37,7 +37,7 @@ function SonosAccessory(log, config) {
 
         // Check for compulsory values - if they are not present, then return early.
         // this appears to have the effect that this 'instance' is then not loaded. 
-        // Which is what you want for somthing that wont work correctly due to missing parameters.
+        // Which is what you want for something that wont work correctly due to missing parameters.
         try{
 	        if (!this.apiBaseUrl) throw "You must provide a config value for 'apiBaseUrl'";
 	        if (!this.preset) throw "You must provide a config value for 'preset'";
