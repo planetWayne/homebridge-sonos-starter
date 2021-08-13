@@ -3,6 +3,16 @@
   "version": "1.0.18",
   "description": "Sonos plugin for homebridge: https://github.com/nfarina/homebridge that starts presets via https://github.com/jishi/node-sonos-http-api. This fork also looks to see what track is playing and reports as and when the playing track matches with the URI specified in the config.",
   "license": "ISC",
+   "funding": [
+    {
+      "type": "kofi",
+      "url": "https://ko-fi.com/planetWayne"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/planetWayne"
+    }
+  ],
   "keywords": [
     "homebridge-plugin", "sonos"
   ],
