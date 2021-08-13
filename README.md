@@ -6,9 +6,9 @@
 [Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api). 
 
 
-
-## Version 10.0.18 Update
-In the pursuit of plug-in validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
+## Version 1.0.19 Update
+We've been verified! How cool is that! - now have the right to display the verified-by-Homebridge badge!
+Oh, and for some stupid reason, I'd got my version numbers wrong in the ReadMe and ChangeLog (10. instead of 1.) - which has been corrected - Doh!
 
 Previous versions listed in CHANGELOG.md
 

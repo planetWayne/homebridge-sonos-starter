@@ -32,7 +32,7 @@ function SonosAccessory(log, config) {
 
 
         // Let them know we are loading an instance
-        this.log("Track Enhanced v1.0.18");
+        this.log("Track Enhanced v1.0.19");
 
 
         // Check for compulsory values - if they are not present, then return early.

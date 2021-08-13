@@ -1,18 +1,24 @@
-# Change Log 
+# Change Log
 
-## Version 10.0.18 Update
+## Version 1.0.19 Update
+
+### Notable Changes
+
+We've been Verified!! - how cool is that! - Now have the right to display the verified badge on my web page!
+
+## Version 1.0.18 Update
 
 ### Notable Changes
 
 In the pursuit of plug-in validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
 
-## Version 10.0.17 Update
+## Version 1.0.17 Update
 
 ### Notable Changes
 
 Added support for the config to now be done easily via the HomeBridge UI Web interface. No more direct JSON editing - unless you want to :) !
 
-## Version 10.0.15 Update
+## Version 1.0.15 Update
 
 ### Notable Changes
 
