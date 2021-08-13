@@ -1,23 +1,23 @@
 # homebridge-sonos-starter-track
-[Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
+
+[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
+
+
+[Homebridge](https://github.com/nfarina/homebridge) Accessory to start presets via [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api). 
+
 
 
 ## Version 10.0.18 Update
 In the pursuit of plug-in validation! Update to better handle missing parameters from the config as well as a little tidying on log output to make things a little clearer.
 
-## Version 10.0.17 Update 
-In an attempt to make things easier, you can now configure this within the Homebridge UI without the need to dive directly into the JSON file.
-
-## Version 10.0.15 Update
-Now adds an optional extra field to turn off individual zones / players when the Sonos is turned off. Now instead of a ‘pause all’ which stops all players, you can now name, as part of the setup, which players / zones you wish to turn off.
-NOTE: I can’t at this point confirm if this works fully - please test and feedback! (I need another player or two ;-))
+Previous versions listed in CHANGELOG.md
 
 
 ## Use-case
-Automate regular playback in Homekit e.g. start a favourite playlist or radio in a specific room at a specific volume with Siri.
+Automate regular playback in Homekit e.g. start a favourite playlist or radio / streaming service in a specific room at a specific volume with Siri.
 
 
-**planetWayne - Track variation**
+## **planetWayne - Track variation**
 
 This modified version takes the idea of using the TrackURI to see if the Sonos is actually playing a track that you have optionally defined in a preset. The idea being that if you have multiple of these devices set up, they all appear as switches, you want to know if a particular 'switch' is on / playing. For use when you are streaming radio channels and may have multiple set up.
 
